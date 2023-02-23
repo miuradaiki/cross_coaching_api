@@ -15,7 +15,7 @@ worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-port ENV.fetch("PORT") { 3000 }
+port ENV.fetch("PORT") { 3010 }
 
 # Specifies the `environment` that Puma will run in.
 #
@@ -41,3 +41,11 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
+
+## Nginx用の設定を追加
+# ファイルがある場所から2個上の階層をapp_rootとする
+app_root = File.expand_path("../..", __FILE__)
+# unixソケットを使う設定
+bind "unix://#{app_root}/tmp/sockets/puma.sock"
+# 標準出力設定（trueは追記モード）
+stdout_redirect "#{app_root}/log/puma.stdout.log", "#{app_root}/log/puma.stderr.log", true

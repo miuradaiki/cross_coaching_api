@@ -24,13 +24,15 @@ services:
     environment:
       - RAILS_ENV=development
     # コマンド実行（Rails特有の問題解決とRailsの立ち上げ）
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec pumactl start"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle install && bundle exec pumactl start"
     # データの永続化
     volumes:
       # ローカルのカレントディレクトリにマウント
       - .:/app/webapp
       # Webサーバー側からpuma.sockを見れるようにするため永続化
       - ./tmp/sockets:/app/webapp/tmp/sockets
+    ports:
+      - 3000:3000
     # 標準入出力デバイスを設定
     tty: true
     stdin_open: true

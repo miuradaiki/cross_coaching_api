@@ -12,7 +12,7 @@ ENV BUNDLER_VERSION=2.3.25
 RUN apk update && apk upgrade && apk add --virtual build-dependencies build-base
 RUN apk add --no-cache alpine-sdk build-base curl-dev mysql-dev tzdata
 RUN apk add --no-cache ruby-dev libc-dev linux-headers libxml2-dev libxslt-dev
-
+RUN apk add gcompat
 
 # 作業ディレクトリの指定
 ENV APP_ROOT /app/webapp
@@ -44,6 +44,7 @@ ENV RAILS_ENV=production
 RUN apk update && apk upgrade && apk add --virtual build-dependencies build-base
 RUN apk add --no-cache bash mysql-dev tzdata
 RUN apk add --no-cache ruby-dev libc-dev linux-headers libxml2-dev libxslt-dev
+RUN apk add --no-cache gcompat
 
 # 作業ディレクトリの指定
 ENV APP_ROOT /app/webapp
