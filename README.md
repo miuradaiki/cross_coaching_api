@@ -1,24 +1,91 @@
-# README
+# cross-coaching
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- コーチングSNS
+- 2022/12/30〜設計スタート
 
-Things you may want to cover:
+# 環境構築手順
 
-* Ruby version
 
-* System dependencies
+### ER図
+```mermaid
+erDiagram
+users ||--o{ answers : "1人のユーザーは0以上の回答を持つ"
+users ||--o{ shares : "1人のユーザーは0以上のシェアを持つ"
+users ||--o{ feedbacks : "1人のユーザーは0以上のフィードバックを持つ"
+questions ||--o{ answers : "1つの質問は0以上の回答を持つ"
+shares ||--|{ answers : "1つのシェアは1以上の回答を持つ"
+answers ||--o{ feedbacks : "1つの回答は0以上のフィードバックを持つ"
+users ||--o{ relationships : "1つのユーザーは0以上のフォロー/フォロワーを持つ"
 
-* Configuration
 
-* Database creation
+system_admins {
+  id bigint
+  last_name string
+  first_name string
+  email string
+  password string
+  tokens text
+  created_at datetime
+  updated_at datetime
+}
 
-* Database initialization
+users {
+  id bigint
+  first_name string
+  last_name string
+  email string
+  sex integer
+  encryppted_password string
+  reset_password_token string
+  reset_password_sent_at string
+  allow_password_change boolean
+  confirmation_token string
+  confirmed_at datetime
+  confirmation_sent_at datetime
+  unconfirmed_email string
+  created_at datetime
+  updated_at datetime
+}
 
-* How to run the test suite
+questions {
+  id bigint
+  title string
+  description text
+  category_id bigint
+  created_at datetime
+  updated_at datetime
+}
 
-* Services (job queues, cache servers, search engines, etc.)
+answers {
+  id bigint
+  user_id bigint
+  question_id bigint
+  description text
+  created_at datetime
+  updated_at datetime
+}
 
-* Deployment instructions
+shares {
+  id bigint
+  answer_id bigint
+  user_id bigint
+  created_at datetime
+  updated_at datetime
+}
 
-* ...
+feedbacks {
+  id bigint
+  answer_id bigint
+  user_id bigint
+  description text
+  rating string
+  created_at datetime
+  updated_at datetime
+}
+
+relationships {
+  id bigint
+  follower_id bigint
+  followed_id bigint
+}
+```
