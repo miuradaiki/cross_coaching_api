@@ -22,5 +22,14 @@ module Webapp
         view_specs: false,
         routing_specs: false
     end
+
+    # lib配下のファイルを読み込み
+    config.autoload_paths += %W(#{config.root}/lib)
+
+    # CORSエラーのため
+    config.action_dispatch.default_headers = {
+      'Access-Control-Allow-Origin' => '*',
+      'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(",")
+    }
   end
 end
