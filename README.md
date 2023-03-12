@@ -35,14 +35,6 @@ users {
   last_name string
   email string
   sex integer
-  encryppted_password string
-  reset_password_token string
-  reset_password_sent_at string
-  allow_password_change boolean
-  confirmation_token string
-  confirmed_at datetime
-  confirmation_sent_at datetime
-  unconfirmed_email string
   created_at datetime
   updated_at datetime
 }
