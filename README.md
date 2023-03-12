@@ -31,10 +31,12 @@ system_admins {
 
 users {
   id bigint
+  uid string
   first_name string
   last_name string
   email string
   sex integer
+  birthday date
   created_at datetime
   updated_at datetime
 }
