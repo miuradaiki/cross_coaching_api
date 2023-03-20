@@ -2,24 +2,19 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  # username: root
-  # password:
-  # host: localhost
+  port: <%= ENV.fetch("DATABASE_PORT") {3306} %>
+  username: <%= ENV.fetch("MYSQL_USERNAME", "root") %>
+  password: <%= ENV["MYSQL_ROOT_PASSWORD"] %>
+  host: db
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
   database: webapp_development
-  username: root
-  password: <%= ENV["MYSQL_ROOT_PASSWORD"] %>
-  # ホスト名はdocker-compose.ymlにあるDB用のサービス名「db」を指定
-  host: db
 
 test:
   <<: *default
   database: webapp_test
-  username: root
-  password: <%= ENV["MYSQL_ROOT_PASSWORD"] %>
-  host: db
 
 production:
   <<: *default
