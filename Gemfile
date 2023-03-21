@@ -23,3 +23,5 @@ group :development do
   gem "shoulda-matchers"
 end
 
+
+gem "rack-cors", "~> 2.0"
