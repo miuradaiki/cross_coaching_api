@@ -13,5 +13,7 @@
 #  updated_at :datetime         not null
 #
 class User < ApplicationRecord
+  has_many :answers
+
   validates :uid, presence: true
 end
