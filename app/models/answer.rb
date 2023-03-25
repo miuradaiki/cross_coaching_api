@@ -6,8 +6,8 @@
 #  description :text(65535)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  question_id :integer
-#  user_id     :integer
+#  question_id :bigint
+#  user_id     :bigint
 #
 class Answer < ApplicationRecord
   belongs_to :question

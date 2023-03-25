@@ -1,10 +1,11 @@
 # == Schema Information
 #
-# Table name: questions
+# Table name: votes
 #
 #  id          :bigint           not null, primary key
-#  description :text(65535)
-#  title       :string(255)
+#  vote_type   :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  feedback_id :bigint
+#  user_id     :bigint
 #
