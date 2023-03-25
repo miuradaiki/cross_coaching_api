@@ -1,15 +1,11 @@
 # == Schema Information
 #
-# Table name: answers
+# Table name: votes
 #
 #  id          :bigint           not null, primary key
-#  description :text(65535)
+#  vote_type   :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  question_id :bigint
+#  feedback_id :bigint
 #  user_id     :bigint
 #
-class Answer < ApplicationRecord
-  belongs_to :question
-  belongs_to :user
-end
