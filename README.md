@@ -16,6 +16,7 @@ questions ||--o{ answers : "1つの質問は0以上の回答を持つ"
 shares ||--|{ answers : "1つのシェアは1以上の回答を持つ"
 answers ||--o{ feedbacks : "1つの回答は0以上のフィードバックを持つ"
 users ||--o{ relationships : "1つのユーザーは0以上のフォロー/フォロワーを持つ"
+feedbacks ||--o{ votes : "1つのフィードバックーは0以上の投票を持つ"
 
 
 system_admins {
@@ -72,8 +73,16 @@ feedbacks {
   answer_id bigint
   user_id bigint
   description text
-  rating string
   created_at datetime
+  updated_at datetime
+}
+
+votes {
+  id bigint
+  feedback_id bigint
+  user_id bigint
+  created_at datetime
+  vote_type integer
   updated_at datetime
 }
 
