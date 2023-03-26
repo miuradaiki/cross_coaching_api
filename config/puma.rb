@@ -48,4 +48,6 @@ app_root = File.expand_path("../..", __FILE__)
 # unixソケットを使う設定
 bind "unix://#{app_root}/tmp/sockets/puma.sock"
 # 標準出力設定（trueは追記モード）
-stdout_redirect "#{app_root}/log/puma.stdout.log", "#{app_root}/log/puma.stderr.log", true
+unless ENV.fetch("RAILS_ENV", "development") == "development"
+  stdout_redirect "#{app_root}/log/puma.stdout.log", "#{app_root}/log/puma.stderr.log", true
+end
