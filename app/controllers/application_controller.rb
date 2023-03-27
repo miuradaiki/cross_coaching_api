@@ -3,16 +3,16 @@ class ApplicationController < ActionController::API
   include FirebaseAuthenticator
 
   # テスト用のAPIを追加
-  def test
-    # テスト用のJSON形式のオブジェクト
-    test_json_obj = [
-      { id: 1, title: "First Text", text: "最初のテキスト" },
-      { id: 2, title: "Second Text", text: "2番目のテキスト" },
-    ]
+  # def test
+  #   # テスト用のJSON形式のオブジェクト
+  #   test_json_obj = [
+  #     { id: 1, title: "First Text", text: "最初のテキスト" },
+  #     { id: 2, title: "Second Text", text: "2番目のテキスト" },
+  #   ]
 
-    # JSON形式で出力
-    render json: test_json_obj
-  end
+  #   # JSON形式で出力
+  #   render json: test_json_obj
+  # end
 
   # エラー用クラス設定
   class NoIdtokenError < StandardError; end
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::API
   # idTokenの検証を実行
   before_action :authenticate
   # テスト用APIはidTokenの検証をスキップする
-  skip_before_action :authenticate, only: [:test]
+  # skip_before_action :authenticate, only: [:test]
 
   private
   # idTokenの検証
