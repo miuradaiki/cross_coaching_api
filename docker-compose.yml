@@ -26,8 +26,6 @@ services:
     # 依存関係の指定（dbが起動した後に、appが起動する）
     depends_on:
       - db
-    # networks:
-    # - external.group
   db:
     platform: linux/x86_64
     restart:
