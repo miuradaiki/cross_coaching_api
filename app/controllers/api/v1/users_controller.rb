@@ -1,10 +1,14 @@
 module Api
   module V1
     class UsersController < ApplicationController
+      skip_before_action :authenticate, only: [:create]
 
       # 新規ユーザー登録
       def create
-        @user = User.new(uid: payload_uid)
+        # binding.pry
+        uid = params[:uid]
+        email = params[:email]
+        @user = User.new(uid: uid, email: email)
         if @user.save
           render json: @user
         else
@@ -14,16 +18,10 @@ module Api
 
       # ユーザーの削除
       def destroy
-        User.find_by(uid: payload_uid).destroy
-        render json: { messages: ["#{payload_uid}のユーザーを削除しました。"] }
+        uid = params[:uid]
+        User.find_by(uid: uid).destroy
+        render json: { messages: ["ユーザーを削除しました。"] }
       end
-
-      private
-
-        # payloadのuidを返すメソッド
-        def payload_uid
-          @payload["user_id"]
-        end
     end
   end
 end
