@@ -3,13 +3,14 @@ module Api
     class QuestionsController < ApplicationController
       def index
         questions = Question.all
-        render json: questions
+        render json: questions, status: :ok
       end
 
       def show
-        question_id = params[:id]
-        questions = Question.find(question_id)
-        render json: questions
+        question = Question.find(params[:id])
+        render json: question, status: :ok
+      rescue ActiveRecord::RecordNotFound
+        render json: { error: "Question not found" }, status: :not_found
       end
     end
   end
