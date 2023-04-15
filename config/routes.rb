@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     namespace "v1" , defaults: {format: :json} do
       resources :users, only: [:create, :edit, :destroy]
       resources :feedbacks, only: [:edit, :create, :destroy]
-      resources :answers, only: [:show]
+      resources :answers
       resources :questions
       resources :shares
     end
