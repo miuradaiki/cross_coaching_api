@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :feedbacks, only: [:edit, :create, :destroy]
       resources :answers
       resources :questions
-      resources :shares, only: [:index]
+      resources :shares
     end
   end
 end
