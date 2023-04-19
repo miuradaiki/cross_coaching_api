@@ -9,6 +9,6 @@
 #  user_id    :bigint
 #
 class Share < ApplicationRecord
-  has_many :answers
+  belongs_to :answer
   belongs_to :user
 end
