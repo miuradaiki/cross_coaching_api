@@ -1,6 +1,11 @@
 module Api
   module V1
     class AnswersController < ApplicationController
+      def index
+        answers = Answer.all
+        render json: answers, status: :ok
+      end
+
       def show
         question = Question.find(params[:id])
         answer = Answer.find_by(question_id: question.id)
