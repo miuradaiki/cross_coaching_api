@@ -3,11 +3,11 @@
 # Table name: votes
 #
 #  id          :bigint           not null, primary key
-#  vote_type   :integer
+#  down_vote   :integer
+#  up_vote     :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  feedback_id :bigint
-#  user_id     :bigint
 #
 class Vote < ApplicationRecord
   belongs_to :feedback
