@@ -2,6 +2,12 @@ module Api
   module V1
     class FeedbacksController < ApplicationController
       def index
+        share = Share.find(params[:id])
+        feedbacks = Feedback.where(answer_id: share.answer_id).order(created_at: :desc)
+
+        render json: feedbacks, status: :ok
+      rescue ActiveRecord::RecordNotFound
+        render json: { error: "Feedbacks not found" }, status: :not_found
       end
 
       def show
@@ -19,6 +25,8 @@ module Api
         user = User.find_by(uid: feedback_params[:user_id])
         feedback.user_id = user.id
         feedback.save!
+
+        render status: :ok
       end
 
       def update
