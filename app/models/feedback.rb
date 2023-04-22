@@ -11,4 +11,5 @@
 #
 class Feedback < ApplicationRecord
   has_many :votes
+  belongs_to :answer
 end
