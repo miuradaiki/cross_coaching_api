@@ -3,11 +3,11 @@
 # Table name: votes
 #
 #  id          :bigint           not null, primary key
-#  down_vote   :integer
-#  up_vote     :integer
+#  vote_type   :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  feedback_id :bigint
+#  user_id     :bigint
 #
 require 'rails_helper'
 

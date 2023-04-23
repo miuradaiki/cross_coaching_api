@@ -80,9 +80,9 @@ feedbacks {
 votes {
   id bigint
   feedback_id bigint
-  up_vote integer
-  down_vote integer
+  user_id bigint
   created_at datetime
+  vote_type integer
   updated_at datetime
 }
 
