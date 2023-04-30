@@ -11,4 +11,6 @@
 #
 class Vote < ApplicationRecord
   belongs_to :feedback
+
+  enum vote_type: { down: 0, up: 1 }
 end

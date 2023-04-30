@@ -12,4 +12,16 @@
 class Feedback < ApplicationRecord
   has_many :votes
   belongs_to :answer
+
+  def up_votes
+    votes.where(vote_type: :up).count
+  end
+
+  def down_votes
+    votes.where(vote_type: :down).count
+  end
+
+  def total_votes
+    up_votes - down_votes
+  end
 end
