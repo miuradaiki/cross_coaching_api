@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :answers
       resources :questions
       resources :shares
+      resources :votes
     end
   end
 end
