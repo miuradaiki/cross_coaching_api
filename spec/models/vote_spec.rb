@@ -9,6 +9,10 @@
 #  feedback_id :bigint
 #  user_id     :bigint
 #
+# Indexes
+#
+#  index_votes_on_user_id_and_feedback_id  (user_id,feedback_id) UNIQUE
+#
 require 'rails_helper'
 
 RSpec.describe Vote, type: :model do
