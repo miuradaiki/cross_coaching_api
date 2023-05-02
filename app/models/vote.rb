@@ -9,6 +9,10 @@
 #  feedback_id :bigint
 #  user_id     :bigint
 #
+# Indexes
+#
+#  index_votes_on_user_id_and_feedback_id  (user_id,feedback_id) UNIQUE
+#
 class Vote < ApplicationRecord
   belongs_to :feedback
 
