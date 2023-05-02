@@ -65,7 +65,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_02_170524) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.integer "vote_type"
-    t.boolean "is_enabled"
+    t.boolean "is_enabled", default: false
     t.index ["user_id", "feedback_id"], name: "index_votes_on_user_id_and_feedback_id", unique: true
   end
 

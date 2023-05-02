@@ -3,7 +3,7 @@
 # Table name: votes
 #
 #  id          :bigint           not null, primary key
-#  is_enabled  :boolean
+#  is_enabled  :boolean          default(FALSE)
 #  vote_type   :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
