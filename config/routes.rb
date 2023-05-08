@@ -8,7 +8,6 @@ Rails.application.routes.draw do
       resources :questions
       resources :shares
       resources :votes
-      get "votes/feedback/:feedback_id/user/:user_id", to: "votes#check_vote"
       # 投票済みfeedback取得
       get "votes/voted_feedbacks/:user_id", to: "votes#voted_feedbacks"
     end
