@@ -17,6 +17,13 @@ module Api
           render json: { isVoted: false }
         end
       end
+
+      def voted_feedbacks
+        user = User.find_by(uid: params[:user_id])
+        voted_feedback_ids = Vote.where(user_id: user.id).pluck(:feedback_id)
+
+        render json: voted_feedback_ids, status: :ok
+      end
     end
   end
 end
