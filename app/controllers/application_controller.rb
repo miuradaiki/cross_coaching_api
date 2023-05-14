@@ -8,8 +8,6 @@ class ApplicationController < ActionController::API
 
   # idTokenの検証を実行
   before_action :authenticate
-  # テスト用APIはidTokenの検証をスキップする
-  # skip_before_action :authenticate, only: [:test]
 
   private
   # idTokenの検証
