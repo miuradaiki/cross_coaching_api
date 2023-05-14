@@ -5,7 +5,6 @@ module Api
 
       # 新規ユーザー登録
       def create
-        # binding.pry
         uid = params[:uid]
         email = params[:email]
         @user = User.new(uid: uid, email: email)

@@ -6,19 +6,10 @@ module Api
         render json: shares, status: :ok
       end
 
-      def show
-      end
-
       def create
         share = Share.new(share_params)
         share.user = User.find_by(uid: share_params[:user_id])
         share.save!
-      end
-
-      def update
-      end
-
-      def destroy
       end
 
       private
