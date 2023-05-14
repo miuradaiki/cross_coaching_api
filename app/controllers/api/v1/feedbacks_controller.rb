@@ -43,11 +43,6 @@ module Api
         render status: :ok
       end
 
-      def update
-      end
-
-      def destroy
-      end
 
       def feedback_params
         params.require(:feedback).permit(:answer_id, :description, :user_id)

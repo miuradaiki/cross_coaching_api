@@ -14,19 +14,10 @@ module Api
         render json: { error: "Answer not found" }, status: :not_found
       end
 
-      def edit
-      end
-
       def create
         answer = Answer.new(answer_params)
         answer.user = User.find_by(uid: answer_params[:user_id])
         answer.save!
-      end
-
-      def update
-      end
-
-      def destroy
       end
 
       private
