@@ -43,6 +43,7 @@ module Api
         render status: :ok
       end
 
+      private
 
       def feedback_params
         params.require(:feedback).permit(:answer_id, :description, :user_id)

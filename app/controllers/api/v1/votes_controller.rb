@@ -25,6 +25,8 @@ module Api
         end
       end
 
+      private
+
       def vote_params
         params.permit(:feedback_id, :vote_type)
       end
