@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :votes
       # 投票済みfeedback取得
       get "votes/voted_feedbacks/:user_id", to: "votes#voted_feedbacks"
+      get "/my_feedbacks",  to: "feedbacks#my_feedbacks"
     end
   end
 end
