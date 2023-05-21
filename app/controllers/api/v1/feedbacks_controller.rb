@@ -1,7 +1,6 @@
 module Api
   module V1
     class FeedbacksController < ApplicationController
-      before_action :load_uid
 
       def index
         share = Share.find(params[:id])
@@ -38,15 +37,15 @@ module Api
 
       def create
         feedback = Feedback.new(feedback_params)
-        user = User.find_by(uid: feedback_params[:user_id])
-        feedback.user_id = user.id
+        load_uid
+        feedback.user_id = @user.id
         feedback.save!
 
         render status: :ok
       end
 
       def my_feedbacks
-        # feedbackをつけたanswerを取得
+        load_uid
         feedbacks = Feedback.where(user_id: @user.id).includes(:answer)
         feedbacks_with_answers = feedbacks.map do |feedback|
           {
@@ -62,7 +61,7 @@ module Api
       private
 
       def feedback_params
-        params.require(:feedback).permit(:answer_id, :description, :user_id)
+        params.require(:feedback).permit(:answer_id, :description)
       end
 
       def load_uid

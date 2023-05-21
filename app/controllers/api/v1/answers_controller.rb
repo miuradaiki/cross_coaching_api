@@ -16,14 +16,20 @@ module Api
 
       def create
         answer = Answer.new(answer_params)
-        answer.user = User.find_by(uid: answer_params[:user_id])
+
+        load_uid
+        answer.user_id = @user.id
         answer.save!
       end
 
       private
 
       def answer_params
-        params.require(:answer).permit(:answer_id, :description, :user_id)
+        params.require(:answer).permit(:answer_id, :description, :question_id)
+      end
+
+      def load_uid
+        @user = User.find_by(uid: @payload["user_id"])
       end
     end
   end
