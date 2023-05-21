@@ -12,6 +12,7 @@
 class Answer < ApplicationRecord
   belongs_to :question
   belongs_to :user
-  belongs_to :share
+  # belongs_to :share
+  # これがあるとanswerのcreateで失敗した
   has_many :feedbacks
 end

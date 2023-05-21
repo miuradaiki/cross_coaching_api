@@ -8,14 +8,18 @@ module Api
 
       def create
         share = Share.new(share_params)
-        share.user = User.find_by(uid: share_params[:user_id])
+        share.user = @user.id
         share.save!
       end
 
       private
 
       def share_params
-        params.require(:share).permit(:user_id, :answer_id)
+        params.require(:share).permit(:answer_id)
+      end
+
+      def load_uid
+        @user = User.find_by(uid: @payload["user_id"])
       end
     end
   end
