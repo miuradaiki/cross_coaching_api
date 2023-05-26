@@ -17,9 +17,26 @@ module Api
 
       # ユーザーの削除
       def destroy
-        uid = params[:uid]
-        User.find_by(uid: uid).destroy
+        load_uid
+        User.find_by(uid: @user.uid).destroy
         render json: { messages: ["ユーザーを削除しました。"] }
+      end
+
+      def edit
+        load_uid
+        profiles = {
+          uid: @user.uid,
+          first_name: @user.first_name,
+          last_name: @user.last_name,
+          email: @user.email
+        }
+        render json: profiles, status: :ok
+      end
+
+      private
+
+      def load_uid
+        @user = User.find_by(uid: @payload["user_id"])
       end
     end
   end
