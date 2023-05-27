@@ -7,8 +7,10 @@ module Api
       end
 
       def show
+        load_uid
+
         question = Question.find(params[:id])
-        answer = Answer.find_by(question_id: question.id)
+        answer = Answer.where(user_id: @user.id, question_id: question.id).first
         render json: answer, status: :ok
       rescue ActiveRecord::RecordNotFound
         render json: { error: "Answer not found" }, status: :not_found
