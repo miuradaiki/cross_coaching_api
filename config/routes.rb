@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   namespace "api" do
     namespace "v1" , defaults: {format: :json} do
       resources :users, only: [:create, :edit, :destroy]
+      # ユーザー削除（id送れずuidを送るため別で設定）
+      delete "users", to: "users#destroy"
       resources :feedbacks
       resources :answers
       resources :questions
