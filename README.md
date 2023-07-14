@@ -1,9 +1,12 @@
 # cross-coaching
+<img src="cross-coaching.png" width="400">
 
 - コーチングSNS
 - 2022/12/30〜設計スタート
 
-# 環境構築手順
+## What's Cross-Coaching?
+Cross Coachingとは、セルフコーチングとして回答した内容に対し、<br/>
+匿名でお互いにフィードバックを行うコーチングSNSです。
 
 
 ### ER図
